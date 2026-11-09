@@ -1,22 +1,22 @@
 import pandas as pd
 from pathlib import Path
-from functools import cache
 
 PATH = Path(__file__).resolve().parent.parent / "data" / "raw" / "star_classification.csv"
 
 def load_df() -> pd.DataFrame: return pd.read_csv(PATH)
 
-def dimension_of_dataset() -> tuple[int, int]: return load_df().shape
+df: pd.DataFrame = load_df()
+def get_dataset_shape(df: pd.DataFrame) -> tuple[int, int]: return df.shape
 
-def columns_names() -> list[str]: return load_df().columns.tolist()
+def get_column_names(df: pd.DataFrame) -> list[str]: return df.columns.tolist()
 
-def data_types_columns() -> pd.Series: return load_df().dtypes
+def get_column_types(df: pd.DataFrame) -> pd.Series: return df.dtypes
 
-def first_five_rows() -> pd.DataFrame: return load_df().head()
+def get_head(df: pd.DataFrame) -> pd.DataFrame: return df.head()
 
-def describe_dataset() -> pd.DataFrame: return load_df().describe(include='all')
+def describe_dataset(df: pd.DataFrame) -> pd.DataFrame: return df.describe(include='all')
 
-def missing_value() -> pd.Series: return load_df().isna().sum()
+def count_missing_value(df: pd.DataFrame) -> pd.Series: return df.isna().sum()
 
-def count_dublicates() -> pd.Series: return load_df().duplicated().sum()
+def count_dublicates(df: pd.DataFrame) -> int: return df.duplicated().sum()
 
