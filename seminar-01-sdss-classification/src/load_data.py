@@ -19,4 +19,3 @@ def describe_dataset(df: pd.DataFrame) -> pd.DataFrame: return df.describe(inclu
 def count_missing_value(df: pd.DataFrame) -> pd.Series: return df.isna().sum()
 
 def count_dublicates(df: pd.DataFrame) -> int: return df.duplicated().sum()
-
